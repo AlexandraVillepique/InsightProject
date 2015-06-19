@@ -21,3 +21,7 @@ Unfortunately, now I had to change direction in the analysis. Census data, encom
 **New Variable - Location Quotient** - I had to develop a new variable to deal with varying volume of visitors to different areas of the city. 
 
 **Analysis** -detailed analysis with the result and  map plots. View it here: http://nbviewer.ipython.org/github/AlexandraVillepique/InsightProject/blob/master/Analysis.ipynb
+
+**SteamlinedAnalysis** - just a part of an analysis that is crucial for picking a location based on Location Quotient. 
+
+**Pittsburgh_PA** - what is happening in this city?
