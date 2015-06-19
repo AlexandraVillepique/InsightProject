@@ -24,4 +24,4 @@ Unfortunately, now I had to change direction in the analysis. Census data, encom
 
 **SteamlinedAnalysis** - just a part of an analysis that is crucial for picking a location based on Location Quotient. View it here: http://nbviewer.ipython.org/github/AlexandraVillepique/InsightProject/blob/master/SteamlinedAnalysis.ipynb
 
-**Pittsburgh_PA** - what is happening in this city?
+**Pittsburgh_analysis** - what is happening in this city?
