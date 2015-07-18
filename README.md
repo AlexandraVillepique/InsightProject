@@ -1,6 +1,6 @@
 # Pick a Place
 
-This project is part of Fellowship at **INSIGHT DATA SCIENCE**.
+This project is part of Fellowship at *INSIGHT DATA SCIENCE*. The slides presenting this project are here: http://slides.com/aleksandravillepique/deck#/
 
 Fellows suppose to pick a project during a first or second week of the program. For me, finding a practical, scalable project included only looking around.  
 I live in a resort area, a place where certain types of business thrive, and others, crop up for a season and then close.  
@@ -36,28 +36,27 @@ YELP itself admits that business categories in their dataset are not perfect. Th
 Unfortunately, US Census data, encompassing all variables I deem useful, does not have enough resolution to pinpoint a location suitable for business. I needed resolution that provides accuracies withing a block while Census data that cover income and education information tend to resolve only to the town level. 
 Thus, I decided to continue my research using only Yelp data. This means that the whole approach to the problem had to be slightly changed.   
 
-Here you can find iPhyton notebooks, detailing my data exploration of the project, analysis, and plans. 
+Instead of determining demographic info behind the popularity of a particular type of business, I concentrated on a different approach. As I said previously,  persons with a particular set of interests tend to patronize the business that matches their interests or needs. It might be possible to establish types of business that go well together, merely because they attract a similar type of customers. In such enviroment, a correct kind of neighbors will increase the number of people who enter the premises, simply by being close to the business type preferred by targeted customers.   
 
-The slides for the project you can find at http://slides.com/aleksandravillepique/deck#/
+This analysis approach can be covered by YELP data only, and then, if time allows, analysis can be scaled up in precision using other data sources. 
 
-Below are individual notebooks with the short explanation what is in them.
+The first step with this approach is to locate which businesses are physically close together. A clustering algorithm should be applied to geographical coordinates of the businesses. 
+I did a test of such algorithm to see which one will perform the best for the purposes of my analysis.  **Clustering algorithm** notebook offers an explanation of why DBSCAN is more suitable for use in a geographical application. View it here: http://nbviewer.ipython.org/github/AlexandraVillepique/InsightProject/blob/master/Clustering%20Algorithms%20.ipynb
 
-**PreliminaryExploratoryAnalysis** -  a brief overview of my first exploration of the dataset to see is it appropriate for answering my question. 
+However, with this approach I had to weed out University dataset from YELP data and concentrate only on the data that covered the whole cities. The bias introduced by university centric areas would negatively impact generalization of my analysis.  **Phoenix_AZ** notebook offers an example of clustering applied on Phoenix, Arizona. View it here: http://nbviewer.ipython.org/github/AlexandraVillepique/InsightProject/blob/master/Phoenix_AZ.ipynb
 
-**ExploratoryAnalysis** - more dwelling into a problem. 
+## Dealing with biases
 
-**SeakPeak** - looking is there a connection between demographic info and popularity of different business categories.
 
-Unfortunately, now I had to change direction in the analysis. Census data, encompassing all variables I deem useful, does not have enough resolution to answer truly which exact location would be suitable for which type of the business. Thus, I decided to continue my research using only Yelp data. This means that the whole approach to the problem is slightly changed. 
+For my analysis, I decided to use reviews count as a proxy of the popularity of the business. However, the very structure of the city introduces bias. A typical town in the US tends to have heavily visited the downtown area and sparsely populated suburbs. This implies that business located in downtown will appear more attractive than business in suburb simply because there are more people visiting the area. I found a way to sort that particular problem. I formed a new variable, based on Location Quotient, and an economic indicator of the economic structure and activity of the area. This particular variable does not depend on the number of the visitors of the individual cluster of business but instead offers ranking of the local popularity of each business in the Phoenix. The details describing the variable, its definition and calculations can be found in notebook:  **New Variable - Location Quotient**.   
 
-**Clustering algorithm** - My explanation of why DBSCAN is more suitable for use in a geographical application. View it here: http://nbviewer.ipython.org/github/AlexandraVillepique/InsightProject/blob/master/Clustering%20Algorithms%20.ipynb
+So, I could proceed with analysis. **Analysis**  is a notebook with detailed analysis with the result and map plots.  View it here: http://nbviewer.ipython.org/github/AlexandraVillepique/InsightProject/blob/master/Analysis.ipynb  In this notebook, I also compared two different approaches to the map plots. The potential business owner wishes to see a simple presentation of the analysis results that directly addresses his/hers question. A map plot seems a logical solution of the results visualization.  
+This notebook also covers a crude test of my analysis method. I compared my approach to the random placing of the business. So analysis based on Spearman rank correlation outperforms random siting of a business.   
+The precision of this analysis approach could and should be improved by including another dataset. The most beneficial data would be data that include rent/property prices across the area. Moreover, demographic and economic information about the area can be included to increase the precision.   
 
-**Phoenix_AZ** - Clustering applied on Phoenix. View it here: http://nbviewer.ipython.org/github/AlexandraVillepique/InsightProject/blob/master/Phoenix_AZ.ipynb
+**SteamlinedAnalysis** is a notebook that presents an analysis crucial for picking a location based on a popularity of the business category. In this notebook, only algorithms that produced satisfactory results are kept. View it here: http://nbviewer.ipython.org/github/AlexandraVillepique/InsightProject/blob/master/SteamlinedAnalysis.ipynb   
 
-**New Variable - Location Quotient** - I had to develop a new variable to deal with varying volume of visitors to different areas of the city. 
+Of course, just for fun, I decided to see what is going on in another city. 
+**Pittsburgh_PA** is notebook that shows results of analysis for Pittsburgh, PA. View at: http://nbviewer.ipython.org/github/AlexandraVillepique/InsightProject/blob/master/Pittsburgh_analysis.ipynb
 
-**Analysis** -detailed analysis with the result and  map plots. View it here: http://nbviewer.ipython.org/github/AlexandraVillepique/InsightProject/blob/master/Analysis.ipynb
 
-**SteamlinedAnalysis** - just a part of an analysis that is crucial for picking a location based on Location Quotient. View it here: http://nbviewer.ipython.org/github/AlexandraVillepique/InsightProject/blob/master/SteamlinedAnalysis.ipynb
-
-**Pittsburgh_analysis** - what is happening in this city? View at: http://nbviewer.ipython.org/github/AlexandraVillepique/InsightProject/blob/master/Pittsburgh_analysis.ipynb
